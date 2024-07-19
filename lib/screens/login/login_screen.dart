@@ -18,6 +18,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FocusNode _usernameFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -61,6 +62,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 SizedBox(height: 3.h),
                 LoginField(
                   controller: _usernameController,
+                  icon: const Icon(Icons.person),
                   hintText: 'Username',
                   formKey: _formKey,
                   focusNode: _usernameFocusNode,
@@ -68,15 +70,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 SizedBox(height: 2.h),
                 LoginField(
                   controller: _passwordController,
+                  icon: const Icon(Icons.lock),
                   hintText: 'Password',
                   obscureText: true,
                   formKey: _formKey,
                   focusNode: _passwordFocusNode,
+                  sufIcon: const Icon(Icons.remove_red_eye),
                 ),
                 SizedBox(height: 2.h),
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState?.validate() ?? false) {
+                      setState(() {
+                        isLoading = true;
+                      });
                       final username = _usernameController.text;
                       final password = _passwordController.text;
 
@@ -84,8 +91,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                       // Check if login is successful
                       if (authNotifier.isLoggedIn) {
+                        setState(() {
+                          isLoading = false;
+                        });
                         context.go('/home');
                       } else {
+                        setState(() {
+                          isLoading = false;
+                        });
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Invalid username or password'),
@@ -100,7 +113,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       );
                     }
                   },
-                  child: const Text('Login'),
+                  child: isLoading
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : const Text('Login'),
                 ),
               ],
             ),
