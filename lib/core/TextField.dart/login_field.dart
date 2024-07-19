@@ -29,37 +29,38 @@ class LoginField extends StatelessWidget {
             controller: controller,
             focusNode: focusNode,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(27),
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Palette.lightGreyColor,
-                  width: 3,
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Palette.lightGreyColor,
+                    width: 3,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Palette.themeColor,
-                  width: 3,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Palette.themeColor,
+                    width: 3,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.red,
-                  width: 3,
+                errorBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.red,
+                    width: 3,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Palette.themeColor,
-                  width: 3,
+                focusedErrorBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Palette.themeColor,
+                    width: 3,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              hintText: hintText,
-            ),
+                hintText: hintText,
+                hintStyle: TextStyle(fontSize: 15)),
             obscureText: obscureText,
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -73,7 +74,6 @@ class LoginField extends StatelessWidget {
               }
             },
           ),
-          const SizedBox(height: 5),
         ],
       ),
     );

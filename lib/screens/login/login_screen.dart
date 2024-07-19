@@ -65,7 +65,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   formKey: _formKey,
                   focusNode: _usernameFocusNode,
                 ),
-                SizedBox(height: 3.h),
+                SizedBox(height: 2.h),
                 LoginField(
                   controller: _passwordController,
                   hintText: 'Password',
@@ -73,7 +73,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   formKey: _formKey,
                   focusNode: _passwordFocusNode,
                 ),
-                SizedBox(height: 3.h),
+                SizedBox(height: 2.h),
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState?.validate() ?? false) {
